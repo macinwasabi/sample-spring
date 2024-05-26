@@ -1,0 +1,34 @@
+version: '3'
+services:
+  ss:
+    build:
+      context: ./src
+    env_file:
+      - ./env/common.env
+    environment:
+      - SPRING_PROFILES_ACTIVE=prd
+    volumes:
+      # /appはDockerfileでWORKディレクトリに指定
+      - ./:/app
+    command: ./mvnw clean spring-boot:run
+    ports:
+      - "8080:8080" # SpringBoot
+  mysql:
+    build:
+      context: ./mysql
+    env_file:
+      - ./env/mysql.env
+      - ./env/common.env
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    platform: linux/amd64 # M1Macの場合platformの設定要
+  vue:
+    build:
+      context: ./vue
+    volumes:
+      - ./vue/app:/app
+    ports:
+      - "80:5173"
+    tty: true
