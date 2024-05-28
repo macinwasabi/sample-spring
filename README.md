@@ -47,6 +47,12 @@ REST API風とする。DBアクセスはMyBatisを用いて、エンティティ
 
 Vue.jsでSSからのレスポンスを表示する。
 
+- Add TypeScript
+- Add Vue Router for Single Page Application development
+- Add Vitest for Unit Testing
+
+をYesにした。
+
 ### DB
 
 MySQLで作成する。
