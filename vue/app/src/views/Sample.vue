@@ -23,4 +23,6 @@ const teachers = ref([
     firstName: "先生"
   }
 ])
+
+// TODO:PromiseとasyncでAPIを呼び出したい
 </script>
